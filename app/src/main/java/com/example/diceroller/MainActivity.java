@@ -12,11 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView PC;
+    ArrayList<String> Qs;
 
 
 
@@ -27,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         PC = (TextView)findViewById(R.id.pointCounter);
+
+        Qs = new ArrayList<>();
+        Qs.add("If you could go anywhere in the world, where would you go?");
+        Qs.add("If you were stranded on a desert island, what three things would you want to take with you?");
+        Qs.add("If you could eat only one food for the rest of your life, what would that be?");
+        Qs.add("If you won a million dollars, what is the first thing you would buy?");
+        Qs.add("If you could spaned the day with one fictional character, who would it be?");
+        Qs.add("If you found a magic lantern and a genie gave you three wishes, what would you wish?");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +94,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void guessNumber (View view){
+    public void roll_the_dice (View view){
+        Random r = new Random ();
+        int num = r.nextInt(6)+1;
+        String question = Qs.get(num - 1);
+        TextView tv = (TextView) findViewById(R.id.icebreaker);
+        tv.setText(question);
 
     }
 }
