@@ -8,7 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -54,11 +56,26 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onButtonClick (View view){
       TextView tv = (TextView)  this.findViewById(R.id.numberDisplay);
-
+        EditText GuessInput = (EditText) findViewById(R.id.guessNumber);
         Random r = new Random();
-        int number = r.nextInt(7);
-
+        int number = r.nextInt(6)+1;
         tv.setText(Integer.toString(number));
+
+        int number1= Integer.parseInt(GuessInput.getText().toString());
+        if(number1<1 || number1>6 ){
+            Toast.makeText(this,"invalid value", Toast.LENGTH_SHORT).show();
+
+        }
+        else if (number1 == number)
+        {
+            Toast.makeText(this,"Congrats!", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+    }
+    public void guessNumber (View view){
 
     }
 }
