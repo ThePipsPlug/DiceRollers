@@ -16,12 +16,17 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView PC;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        PC = (TextView)findViewById(R.id.pointCounter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -55,20 +60,24 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void onButtonClick (View view){
-      TextView tv = (TextView)  this.findViewById(R.id.numberDisplay);
+
+        TextView tv = (TextView)  this.findViewById(R.id.numberDisplay);
         EditText GuessInput = (EditText) findViewById(R.id.guessNumber);
         Random r = new Random();
         int number = r.nextInt(6)+1;
         tv.setText(Integer.toString(number));
 
         int number1= Integer.parseInt(GuessInput.getText().toString());
+
         if(number1<1 || number1>6 ){
             Toast.makeText(this,"invalid value", Toast.LENGTH_SHORT).show();
-
         }
         else if (number1 == number)
         {
             Toast.makeText(this,"Congrats!!", Toast.LENGTH_SHORT).show();
+            int pointCounter = Integer.parseInt(PC.getText().toString());
+            pointCounter = pointCounter +1;
+            PC.setText(String.valueOf(pointCounter));
         }
 
 
