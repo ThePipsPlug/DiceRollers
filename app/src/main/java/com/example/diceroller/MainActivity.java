@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (number1 == number)
         {
-            Toast.makeText(this,"Congrats!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Congrats!!", Toast.LENGTH_SHORT).show();
         }
 
 
